@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #FCEEB5; /* Soft pastel yellow */
+  color: #1A1A1A;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #180037; /* Deep purple */
+  color: #1A1A1A;
+}
+
+
+    /* Theme Toggle Wrapper */
+#theme-toggle-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  padding: 1rem 1rem;
+  background-color: #180037;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#theme-toggle:hover {
+  background-color: #230064;
+}
+
+/* Buttons */
+button, .header-cta a {
+  padding: 0.5rem 1rem;
+  background-color: #FF6600;
+  color: #FFF;
+  border-radius: 5px;
+  margin: 0 0.5rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover, .header-cta a:hover {
+  background-color: #E65100;
+}
+
+
+
+
+/* Header Section */
+header {
+  margin-top: 5rem; /* Creates space below the fixed toggle button */
+  text-align: center;
+  padding: 2rem 0;
+  background-color: #FFA500; /* Softer orange */
+  transition: background-color 0.3s;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+
+body.dark-mode header {
+  background-color: #ff8000;
+}
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #01011e;
+    }
+
+    .header-cta {
+      margin-top: 1rem;
+    }
+
+    .header-cta a {
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      background-color: #01011e;
+      color: #FFB700;
+      border-radius: 5px;
+      margin: 0 0.5rem;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .header-cta a.secondary {
+      background-color: #01011e;
+    }
+
+    .header-cta a:hover {
+      background-color: #01011e;
+    }
+
+/* Navigation Bar */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #01011e; /* Dark purple */
+  color: #FF6600;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  z-index: 1000;
+}
+
+nav a {
+  color: #FFB700;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  transition: color 0.3s;
+}
+
+nav a.active {
+  border-bottom: 3px solid #F94144; /* Active Page Indicator */
+}
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+ /* PROJECT SECTION */
+#projects {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#projects h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: #201d18;
+}
+
+body.dark-mode #projects h2 {
+  color: #FFB700; /* Bright yellow for dark mode */
+}
+
+/* PROJECT GRID */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* PROJECT CARD */
+.project-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+body.dark-mode .project-card {
+  background: linear-gradient(90deg, #6f00e6, #F6B55A); /* Vibrant Colors */
+  color: #ffffff !important; /* Force text to be white */
+}
+
+
+/* PROJECT IMAGE */
+.project-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* HOVER EFFECT: IMAGE ZOOM */
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+/* DARK OVERLAY ON HOVER */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay */
+  color: #ffffff !important;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* PROJECT INFO */
+.project-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.6); /* Dark background for contrast */
+  color: #fff;
+  text-align: center;
+  word-wrap: break-word; /* Ensures long words do not cause overflow */
+  transition: background 0.3s ease-in-out;
+}
+
+.project-card:hover .project-info {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* PROJECT TITLE */
+.project-info h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.0 rem;
+}
+
+/* PROJECT DESCRIPTION */
+.project-info p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  padding: 20px; /* Adjust padding to ensure text does not touch the edges */
+
+}
+
+/* DARK MODE STYLING */
+body.dark-mode .project-card::before {
+  background: rgba(47, 47, 47, 0.2);
+}
+
+body.dark-mode .project-info {
+  background: rgba(0, 0, 0, 0.3);
+  color: #ffffff !important;
+}
+
+/* MAKE WHOLE CARD CLICKABLE */
+.project-card a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  z-index: 2;
+}
+
+
+    /* Responsive Design for Smaller Screens */
+    @media (max-width: 768px) {
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .project-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #01011e;
+  color: #FFB700;
+  padding: 1rem;
+}
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      background-color: #180037;
+
+      color: #FFB700;
+      border: none;
+      border-radius: 5px;
+      z-index: 1000; /* Ensure it appears above other elements */
+
+    }
+
+    #theme-toggle:hover {
+      background-color: rgb(72, 0, 179);
+    }
+
+    #typing-text {
+      display: inline-block;
+      height: 2rem; /* Adjust based on font size */
+      overflow: hidden;
+      white-space: nowrap; /* Prevent wrapping */
+}
+
+  </style>
+</head>
+<body>
+
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="https://linktr.ee/riva_pereira">Contact</a>
+  </nav>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Riva Pereira</h1>
+    <p id="typing-text">Check out my portfolio-!!!</p>
+    <div class="header-cta">
+      <a href="#projects">View My Projects</a>
+      <a href="C:\Users\ronee\OneDrive\Documents\RIVA TRYNA GET WORK\Riva CV's\Riva's Resume (September 1).pdf">Download CV</a>
+      <a href="https://linktr.ee/riva_pereira" class="secondary">Contact Me</a>
+        <!-- Theme Toggle Button -->
+      
+        <button id="theme-toggle">Switch Theme</button>
+    </div>
+  </header>
+
+
+
+  <!-- Project Showcase -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="images\image1.jpg" alt="Python Data Science Portfolio">
+        <div class="project-info">
+          <h3>New York Restaurants (SQL) <br></h3>
+          <p>This is an analysis of the list of New York restaurants.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image2.png" alt="Power BI Data Science Portfolio">
+        <div class="project-info">
+          <h3>Global Trades Dashboard</h3>
+          <p>A dashboard made using a Kaggle dataset on global imports and exports.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image3.png" alt="Power BI Data Science Portfolio">
+        <div class="project-info">
+          <h3>Trend in Startups (SQL)</h3>
+          <p>Analyzing startup data using aggregate queries.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image4.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Frida Kahlo Cumulative Project (Python)</h3>
+          <p>Exploring data related to Frida Kahlo's life and work.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image5.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Encryption and Decryption Code (Python)</h3>
+          <p>Python-based project for secure messaging.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image6.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Hurricane Analysis (Python)</h3>
+          <p>Studying hurricane trends using data analysis.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image7.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>A/B Testing for Showfly.com (Python)</h3>
+          <p>Improving websites with statistical methods.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image8.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>NBA Analysis (Python)</h3>
+          <p>Analyzing performance trends in the NBA.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image9.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Medical Insurance Project (Python)</h3>
+          <p>Analysis using Python and statistical methods.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image10.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Petal Power Inventory (Python)</h3>
+          <p>Inventory management system using Python.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image11.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Page Visits Funnel (Python)</h3>
+          <p>Analyzing user behavior through a website funnel.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image12.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Diagnosing Diabetes (Python)</h3>
+          <p>Machine learning model for diagnosing diabetes.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image13.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>This is Jeopardy (Python)</h3>
+          <p>Simulation and analysis of the popular quiz show.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image14.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Census Variables (Python)</h3>
+          <p>Analyzing demographic data using Python libraries.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image15.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Analyze Hacker News Trends (SQL)</h3>
+          <p>Usage of aggregate queries to analyze trends on Hacker News.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/image16.png" alt="Python Portfolio">
+        <div class="project-info">
+          <h3>Lyft Trip Data (SQL)</h3>
+          <p>Usage of aggregate queries to analyze Lyft trip data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Riva Pereira. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Typing Effect
+    document.addEventListener("DOMContentLoaded", function () {
+      const textElement = document.getElementById("typing-text");
+      const words = ["Data Scientist", "App Developer", "Machine Learning Developer"];
+      let wordIndex = 0;
+      let letterIndex = 0;
+      let currentWord = "";
+      let isDeleting = false;
+
+      function type() {
+        currentWord = words[wordIndex];
+        if (!isDeleting) {
+          textElement.textContent = currentWord.substring(0, letterIndex + 1);
+          letterIndex++;
+        } else {
+          textElement.textContent = currentWord.substring(0, letterIndex - 1);
+          letterIndex--;
+        }
+
+        if (!isDeleting && letterIndex === currentWord.length) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        } else if (isDeleting && letterIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(type, 500);
+        } else {
+          setTimeout(type, isDeleting ? 50 : 100);
+        }
+      }
+
+      type();
+    });
+
+    // Theme Toggle
+    const toggleButton = document.getElementById("theme-toggle");
+    toggleButton.addEventListener("click", function () {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
+</body>
+</html>
