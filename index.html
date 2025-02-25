@@ -21,6 +21,8 @@ body {
 
 }
 
+
+
 body.dark-mode {
   background-color: #180037; /* Deep purple */
   color: #1A1A1A;
@@ -29,11 +31,11 @@ body.dark-mode {
 
     /* Theme Toggle Wrapper */
 #theme-toggle-wrapper {
-  position: fixed;
+  position:relative;
   top: 0;
   right: auto;
   padding: 1rem;
-  z-index: 1000;
+  /* z-index: 1000; */
 }
 
 /* Theme Toggle Button */
@@ -47,7 +49,7 @@ body.dark-mode {
 }
 
 #theme-toggle:hover {
-  background-color: #230064;
+  background-color: #ffa600;
 }
 
 @media (max-width: 768px) {
@@ -550,6 +552,22 @@ footer {
     transition: background 0.3s, transform 0.2s;
 }
 
+
+
+@media (max-width: 768px) {
+    #theme-toggle {
+        position: relative;  /* Remove fixed positioning */
+        width: auto;
+        max-width: 100%; /* Prevent it from overflowing */
+        padding: 10px 15px; /* Adjust padding */
+        font-size: 14px; /* Make text smaller */
+        text-align: center;
+        margin: 0 auto; /* Center it */
+        display: block;
+    }
+}
+
+
 @media (max-width: 768px) {
     nav {
         padding: 1rem; /* Ensures proper spacing on smaller screens */
@@ -560,8 +578,10 @@ footer {
     }
 }
 
+.nav-links
+
 #theme-toggle:hover {
-    background: #4500a0;
+    background: #e6c840;
     transform: scale(1.05);
 }
 
@@ -582,6 +602,91 @@ footer {
 }
 
 
+@media (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    #theme-toggle {
+        margin-top: 10px; /* Add spacing below the links */
+    }
+}
+
+
+
+
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Keeps items aligned */
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #01011e;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures navbar stays above content */
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.theme-toggle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FIX: Ensure Button is Always Visible */
+#theme-toggle {
+    background: #FFB700;
+    color: #01011e;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* 🔹 FIX MOBILE VIEW */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Stack navbar items */
+        align-items: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .theme-toggle-container {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px; /* Add spacing below the links */
+    }
+
+    #theme-toggle {
+        width: 80%; /* Makes sure it fits in mobile */
+        max-width: 200px;
+    }
+}
+
+
+
+
+
+
 
   </style>
 </head>
@@ -591,14 +696,15 @@ footer {
   <!-- Navigation Bar -->
   <nav>
     <div class="nav-links">
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="https://linktr.ee/riva_pereira">Contact</a>
-    <button id="theme-toggle">Switch Theme</button>
-  </div>
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="https://linktr.ee/riva_pereira">Contact</a>
+        <div class="theme-toggle-container">
+          <button id="theme-toggle">Switch Theme</button>
+      </div>
+    </div>
+</nav>
 
-
-  </nav>
 
   <!-- Header Section -->
   <header>
@@ -621,112 +727,112 @@ footer {
     <h2>Projects</h2>
     <div class="project-grid">
       <div class="project-card">
-        <img src="image1.jpg" alt="SQL Data Science Portfolio">
+        <img src="assets\images\image1.jpg" alt="SQL Data Science Portfolio">
         <div class="project-info">
           <h3>New York Restaurants<br></h3>
           <p>This is an analysis of the list of New York restaurants.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image2.png" alt="Power BI Data Science Portfolio">
+        <img src="assets\images/image2.png" alt="Power BI Data Science Portfolio">
         <div class="project-info">
           <h3>Global Trades Dashboard</h3>
-          <p>A dashboard made using a Kaggle dataset on global imports and exports.</p>
+          <p>A dashboard about global imports and exports.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image3.png" alt="SQL Data Science Portfolio">
+        <img src="assets\images/image3.png" alt="SQL Data Science Portfolio">
         <div class="project-info">
           <h3>Trend in Startups</h3>
           <p>Analyzing startup data using aggregate queries.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image4.png" alt="Python Portfolio">
+        <img src="assets\images/image4.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>Frida Kahlo Cumulative Project</h3>
           <p>Exploring data related to Frida Kahlo's life and work.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image5.png" alt="Python Portfolio">
+        <img src="assets\images/image5.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>Encryption and Decryption Code</h3>
           <p>Python-based project for secure messaging.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image6.png" alt="Python Portfolio">
+        <img src="assets\images/image6.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>Hurricane Analysis</h3>
           <p>Studying hurricane trends using data analysis.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image7.png" alt="Python Portfolio">
+        <img src="assets\images/image7.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>A/B Testing for Showfly.com</h3>
           <p>Improving websites with statistical methods.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image8.png" alt="Python Portfolio">
+        <img src="assets\images/image8.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>NBA Analysis</h3>
           <p>Analyzing performance trends in the NBA.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image9.png" alt="Python Portfolio">
+        <img src="assets\images/image9.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>Medical Insurance Project</h3>
           <p>Analysis using Python and statistical methods.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image10.png" alt="Python Portfolio">
+        <img src="assets\images/image10.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>Petal Power Inventory</h3>
           <p>Inventory management system using Python.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image11.png" alt="Python Portfolio">
+        <img src="assets\images/image11.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>Page Visits Funnel</h3>
           <p>Analyzing user behavior through a website funnel.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image12.png" alt="Python Portfolio">
+        <img src="assets\images/image12.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>Diagnosing Diabetes</h3>
           <p>Machine learning model for diagnosing diabetes.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image13.png" alt="Python Portfolio">
+        <img src="assets\images/image13.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>This is Jeopardy</h3>
           <p>Simulation and analysis of the popular quiz show.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image14.png" alt="Python Portfolio">
+        <img src="assets\images/image14.png" alt="Python Portfolio">
         <div class="project-info">
           <h3>Census Variables</h3>
           <p>Analyzing demographic data using Python libraries.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image15.png" alt="SQL Portfolio">
+        <img src="assets\images/image15.png" alt="SQL Portfolio">
         <div class="project-info">
           <h3>Analyze Hacker News Trends</h3>
-          <p>Usage of aggregate queries to analyze trends on Hacker News.</p>
+          <p>Analyze trends on Hacker News.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="image16.png" alt="SQL Portfolio">
+        <img src="assets\images/image16.png" alt="SQL Portfolio">
         <div class="project-info">
           <h3>Lyft Trip Data</h3>
           <p>Usage of aggregate queries to analyze Lyft trip data.</p>
@@ -780,6 +886,10 @@ footer {
     toggleButton.addEventListener("click", function () {
       document.body.classList.toggle("dark-mode");
     });
+
+    
+
+    
   </script>
 </body>
 </html>
